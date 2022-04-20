@@ -1,0 +1,10 @@
+ally 
+name:barion,
+damage type: magic,
+armor:high,
+magic resist:high;
+
+enemy 
+archer;
+
+use(enemy, compose);

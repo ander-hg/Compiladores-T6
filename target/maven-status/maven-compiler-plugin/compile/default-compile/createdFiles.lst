@@ -1,0 +1,4 @@
+br\ufscar\dc\compiladores\T6BaseVisitor.class
+br\ufscar\dc\compiladores\T6Visitor.class
+br\ufscar\dc\compiladores\T6Parser$CmdContext.class
+br\ufscar\dc\compiladores\T6Parser$CmdSkillContext.class

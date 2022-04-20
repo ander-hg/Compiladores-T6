@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Batalha Pokemon!!</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">        <style type="text/css">
+            body {
+               background-image: url("https://images6.alphacoders.com/625/thumb-1920-625266.jpg");                 background-position: center;
+                 background-repeat: no-repeat;
+                 background-size: cover;             }
+          .infos {                 text-align: justify;               vertical-align: middle;                 width: 100vw;                 height: 100vh;             }
+             .infos::after {                 content: '';                 display: inline-block;                 width: 100%;              }
+             .infos-item {               vertical-align: middle;                 display: inline;             }              }
+            .infos-item_ally {
+               text-align: left;            }
+            .infos-item_enemy {
+             text-align: right;            }
+            .infos-item_middle {
+               text-align: center;            }
+            .imgAlly {
+               text-align: left;margin: 90px 0px 10px 100px;            }
+            .imgEnemy {
+               text-align: right;margin: 90px 100px 10px 0px;            }
+            .imgs {
+               display: flex;                 width: 100%;                 justify-content: space-between;            }
+            .result {
+               position: absolute;               top: 50%;
+                 left: 50%;
+                 transform: translate(-50%, -50%);            }
+            .erro {
+                 position: absolute;                 float:left;                 top: 0%;
+                 left: 0%;
+                 color: red;            }
+            .barrinhas {
+                 display:flex;                 justify-content: space-between;                 width:85%;                 margin:3%  7.5%;            }
+            .barrinha {
+                 width: 49%;                 height:40px;                 border-radius:20px;                 border: medium solid #111111;                 background: linear-gradient()            }
+            .barrinha_ally {
+                 background: linear-gradient(to right, #9c0000 0%, #9c0000 50.0%, #1f1f1f 50.0%);            }
+            .barrinha_enemy {
+                 background: linear-gradient(to left, #9c0000 0%, #9c0000 0.0%, #1f1f1f 0.0%);            }
+        </style>
+    </head>
+         
+    <body>
+<div class="erro"> skill pierce not found on enemy</div><section class="barrinhas"><div class="barrinha barrinha_ally"></div><div class="barrinha barrinha_enemy"></div></section><div class="imgs"><div class="imgAlly"><img src="https://www.legendsofkingdomrush.com/images/heroes_companions/14_dark-knight.png"  height="450"></div><div class="imgEnemy">               <br><img src="https://www.legendsofkingdomrush.com/images/heroes_companions/1_ranger.png"  height="450">
+</div></div><div class="result"><h1>KNOCKOUT</h1></div>
