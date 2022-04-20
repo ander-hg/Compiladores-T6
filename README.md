@@ -18,7 +18,7 @@ Autores:
 
 ## Descrição
 
-
+![](/img/battle.png)
   
 <div id='implementacao'>
 
@@ -42,7 +42,7 @@ Argumento 2: arquivo de saída (caminho completo)
 Exemplo de como rodar o analisador:
 
 ```
-java -jar C:\compilatorest3\target\expr-parser2-1.0-SNAPSHOT-jar-with-dependencies.jar C:\compilatorest3\casos-de-teste\3.casos_teste_t3\entrada\8.algoritmo_6-2_apostila_LA.txt C:\compiladorest3\saida.html
+java -jar C:\T6\target\T6-1.0-SNAPSHOT-jar-with-dependencies.jar C:\T6\casos-de-teste\entrada3.txt C:\T6\saida.html
 ```
 
 Como resultado, seu compilador deve ler a entrada C:\compilatorest3\casos-de-teste\3.casos_teste_t3\entrada\8.algoritmo_6-2_apostila_LA.txt e salvar a saída no diretório C:\compiladorest3\saida.html

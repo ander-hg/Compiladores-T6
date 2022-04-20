@@ -17,19 +17,20 @@ import org.antlr.v4.runtime.dfa.DFA;
  *
  * @author ander
  */
-class MyCustomErrorListener implements ANTLRErrorListener{
+class MyCustomErrorListener implements ANTLRErrorListener {
 
     @Override
     public void syntaxError(Recognizer<?, ?> rcgnzr, Object o, int i, int i1, String string, RecognitionException re) {
         // tratamento de erro customizado
         Token t = (Token) o;
         switch (T6Lexer.VOCABULARY.getDisplayName(t.getType())) {
-            case "ERROR" -> GeradorHTML.AdicionaErro("                    <div id=\"erro\">" + "Erro sintático próximo a " + t.getText() + "</div>\n");
+            case "ERROR" ->
+                GeradorHTML.AdicionaErro("                    <div class=\"mensagem errosintatico\">" + "syntactic error near " + t.getText() + "</div>\n");
             default -> {
-                    if(!t.getText().equals("<EOF>")){
-                            // Mostra mensagem de erro sintático e salva no arquivo de saída
-                            GeradorHTML.AdicionaErro("                    <div id=\"erro\">" + "Erro sintático próximo a " + t.getText() + "</div>\n");
-                            }
+                if (!t.getText().equals("EOF")) {
+                    // grava no arquivo de saída a mensagem de erro
+                    GeradorHTML.AdicionaErro("                    <div class=\"mensagem errosintatico\">" + "syntactic error near " + t.getText() + "</div>\n");
+                }
             }
         }
     }
@@ -48,5 +49,5 @@ class MyCustomErrorListener implements ANTLRErrorListener{
     public void reportContextSensitivity(Parser parser, DFA dfa, int i, int i1, int i2, ATNConfigSet atncs) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

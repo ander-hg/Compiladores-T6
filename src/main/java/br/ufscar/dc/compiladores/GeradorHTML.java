@@ -1,6 +1,5 @@
 package br.ufscar.dc.compiladores;
 
-
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Dictionary;
@@ -28,6 +27,7 @@ public class GeradorHTML {
     static String allyClass, allyDmgType, allyArmor, allyMr, enemyClass, enemyDmgType, enemyArmor, enemyMr;
 
     private static void processaImgs() {
+        // dicionario de imagens - personagens
         dicImgsPers.put(1, "https://www.legendsofkingdomrush.com/images/heroes_companions/18_wild-elf.png");
         dicImgsPers.put(2, "https://www.legendsofkingdomrush.com/images/heroes_companions/12_sorcerer.png");
         dicImgsPers.put(3, "https://www.legendsofkingdomrush.com/images/heroes_companions/3_heroe_Asra.png");
@@ -43,7 +43,7 @@ public class GeradorHTML {
         dicImgsPers.put(13, "https://www.legendsofkingdomrush.com/images/heroes_companions/8_sasquatch.png");
         dicImgsPers.put(14, "https://www.legendsofkingdomrush.com/images/heroes_companions/2_heroe_oloch.png");
         dicImgsPers.put(15, "https://www.legendsofkingdomrush.com/images/heroes_companions/16_barbarian.png");
-        dicImgsPers.put(16, "https://www.legendsofkingdomrush.com/images/heroes_companions/4_heroe_gerald.png");    
+        dicImgsPers.put(16, "https://www.legendsofkingdomrush.com/images/heroes_companions/4_heroe_gerald.png");
         dicImgsPers.put(17, "https://www.legendsofkingdomrush.com/images/heroes_companions/7_orc.png");
         dicImgsPers.put(18, "https://www.legendsofkingdomrush.com/images/heroes_companions/14_dark-knight.png");
     }
@@ -51,19 +51,21 @@ public class GeradorHTML {
 
     static void processar() {
         processaImgs();
-        System.out.print(T6Semantico.danoCausado);
-        System.out.print(T6Semantico.danoRecebido);
-        Double danoCausado = T6Semantico.danoCausado;
-        Double danoRecebido = T6Semantico.danoRecebido;
+        double danoCausado = T6Semantico.danoCausado;
+        double danoRecebido = T6Semantico.danoRecebido;
         TabelaDeSimbolos tabela = T6Semantico.tabela;
         // informações para exibir
         // aliado
-        allyClass = T6SemanticoUtils.upperCaseFirst(tabela.verificarNome("ally"));
+        allyClass = tabela.verificarNome("ally");
+        if (allyClass.startsWith("\""))allyClass = allyClass.substring(1, allyClass.length() - 1);
+        allyClass = T6SemanticoUtils.upperCaseFirst(allyClass);
         allyDmgType = tabela.verificarDmg("ally") + " damage";
         allyArmor = tabela.verificarArmor("ally") + " armor";
         allyMr = tabela.verificarMr("ally") + " magic resist";
         // inimigo
-        enemyClass = T6SemanticoUtils.upperCaseFirst(tabela.verificarNome("enemy"));
+        enemyClass = tabela.verificarNome("enemy");
+        if (enemyClass.startsWith("\""))enemyClass = enemyClass.substring(1, enemyClass.length() - 1);
+        enemyClass = T6SemanticoUtils.upperCaseFirst(enemyClass);
         enemyDmgType = tabela.verificarDmg("enemy") + " damage";
         enemyArmor = tabela.verificarArmor("enemy") + " armor";
         enemyMr = tabela.verificarMr("enemy") + " magic resist";
@@ -73,119 +75,151 @@ public class GeradorHTML {
             vidaAlly = vidaEnemy = 0;
             resultado = "DRAW";
         } else if (danoRecebido > danoCausado) {
-            //lose
+            // lose
             vidaAlly = 0;
             vidaEnemy = (danoRecebido - danoCausado) / danoRecebido;
             resultado = "DEDEATED";
         } else {
-            //win
+            // win
             vidaAlly = (danoCausado - danoRecebido) / danoCausado;
             vidaEnemy = 0;
             resultado = "KNOCKOUT";
         }
 
         // cria HTML
-        sb.append("<html>\n"
-                + "    <head>\n"
-                + "        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n"
-                + "        <title>Batalha Pokemon!!</title>\n"
-                + "        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>\n"
-                + "        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js\"></script>\n"
-                + "        <link rel=\"stylesheet\" type=\"text/css\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css\">"
-                + "        <style type=\"text/css\">\n"
-                + "            body {\n"
-                + "               background-image: url(\"https://images6.alphacoders.com/625/thumb-1920-625266.jpg\");"
-                + "                 background-position: center;\n"
-                + "                 background-repeat: no-repeat;\n"
-                + "                 background-size: cover; "
-                + "            }\n"
-                + "          .infos {"
-                + "                 text-align: justify;"
-                + "               vertical-align: middle;"
-                + "                 width: 100vw;"
-                + "                 height: 100vh;"
-                + "             }\n"
-                + "             .infos::after {"
-                + "                 content: '';"
-                + "                 display: inline-block;"
-                + "                 width: 100%;"
-                + "              }\n"
-                + "             .infos-item {"
-                + "               vertical-align: middle;"
-                + "                 display: inline;"
-                + "             }"
-                + "              }\n"
-                + "            .infos-item_ally {\n"
-                + "               text-align: left;"
-                + "            }\n"
-                + "            .infos-item_enemy {\n"
-                + "             text-align: right;"
-                + "            }\n"
-                + "            .infos-item_middle {\n"
-                + "               text-align: center;"
-                + "            }\n"
-                + "            .imgAlly {\n"
-                + "               text-align: left;"
-                + "margin: 90px 0px 10px 100px;"
-                + "            }\n"
-                + "            .imgEnemy {\n"
-                + "               text-align: right;"
-                + "margin: 90px 100px 10px 0px;"
-                + "            }\n"
-                + "            .imgs {\n"
-                + "               display: flex;"
-                + "                 width: 100%;"
-                + "                 justify-content: space-between;"
-                + "            }\n"
-                + "            .result {\n"
-                + "               position: absolute;"
-                + "               top: 50%;\n"
-                + "                 left: 50%;\n"
-                + "                 transform: translate(-50%, -50%);"
-                + "            }\n"
-                + "            .erro {\n"
-                + "                 position: absolute;"
-                + "                 float:left;"
-                + "                 top: 0%;\n"
-                + "                 left: 0%;\n"
-                + "                 color: red;"
-                + "            }\n"
-                + "            .barrinhas {\n"
-                + "                 display:flex;"
-                + "                 justify-content: space-between;"
-                + "                 width:85%;"
-                + "                 margin:3%  7.5%;"
-                + "            }\n"
-                + "            .barrinha {\n"
-                + "                 width: 49%;"
-                + "                 height:40px;"
-                + "                 border-radius:20px;"
-                + "                 border: medium solid #111111;"
-                + "                 background: linear-gradient()"
-                + "            }\n"
-                + "            .barrinha_ally {\n"
-                + "                 background: linear-gradient(to right, #9c0000 0%, #9c0000 " + String.valueOf(vidaAlly * 100) + "%, #1f1f1f " + String.valueOf(vidaAlly * 100) + "%);"
-                + "            }\n"
-                + "            .barrinha_enemy {\n"
-                + "                 background: linear-gradient(to left, #9c0000 0%, #9c0000 " + String.valueOf(vidaEnemy * 100) + "%, #1f1f1f " + String.valueOf(vidaEnemy * 100) + "%);"
-                + "            }\n"
-                + "        </style>\n"
-                + "    </head>\n"
-                + "         \n"
-                + "    <body>\n"
+        sb.append(" <html>\n"
+                + "     <head>\n"
+                + "         <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n"
+                + "         <link rel=\"shortcut icon\" href=\"https://cdn-icons-png.flaticon.com/512/1732/1732452.png\" type=\"image/x-icon\">"
+                + "         <title>Battle</title>\n"
+                + "         <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>\n"
+                + "         <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js\"></script>\n"
+                + "         <link rel=\"stylesheet\" type=\"text/css\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css\">"
+                + "         <style type=\"text/css\">\n"
+                + "             body {\n"
+                + "                 background-image: url(\"https://images6.alphacoders.com/625/thumb-1920-625266.jpg\");"
+                + "                     background-position: center;\n"
+                + "                     background-repeat: no-repeat;\n"
+                + "                     background-size: cover; "
+                + "                     font-family: fantasy;"
+                + "                 }\n"
+                + "                 .imgAlly {\n"
+                + "                     text-align: left;"
+                + "                     margin: 90px 0px 10px 120px;"
+                + "                 }\n"
+                + "                 .imgEnemy {\n"
+                + "                     text-align: right;"
+                + "                     margin: 90px 120px 10px 0px;"
+                + "                 }\n"
+                + "                 .imgs {\n"
+                + "                     position: absolute;"
+                + "                     top: 19%;\n"
+                + "                     display: flex;"
+                + "                     width: 100%;"
+                + "                     justify-content: space-between;"
+                + "                 }\n"
+                + "                 .result {\n"
+                + "                     position: absolute;"
+                + "                     top: 50%;\n"
+                + "                     left: 50%;\n"
+                + "                     transform: translate(-50%, -50%);"
+                + "                     font-weight: bold;"
+                + "                     font-size:100px;"
+                + "                 }\n"
+                + "                 .mensagem {\n"
+                + "                     position: absolute;"
+                + "                     top: 0%;\n"
+                + "                     float:left;"
+                + "                 }\n"
+                + "                 .aviso {\n"
+                + "                     position: absolute;"
+                + "                     float:left;"
+                + "                     left: 50%;\n"
+                + "                     transform: translate(-50%, 0%);"
+                + "                     color: #1f1f1f;"
+                + "                 }\n"
+                + "                 .nome_igual {\n"
+                + "                     position: absolute;"
+                + "                     float:left;"
+                + "                     top: 5%;\n"
+                + "                     left: 50%;\n"
+                + "                     transform: translate(-50%, 0%);"
+                + "                     color: #e5e500;"
+                + "                 }\n"
+                + "                 .errosintatico {\n"
+                + "                     left: 89%;\n"
+                + "                     color: red;"
+                + "                 }\n"
+                + "                 .errosemantico {\n"
+                + "                     left: 0.5%;\n"
+                + "                     color: red;"
+                + "                 }\n"
+                + "                 .barrinhas {\n"
+                + "                     position: absolute;"
+                + "                     top: 3%;\n"
+                + "                     display:flex;"
+                + "                     justify-content: space-between;"
+                + "                     width:85%;"
+                + "                     margin:3%  7.5%;"
+                + "                 }\n"
+                + "                 .barrinha {\n"
+                + "                     width: 49%;"
+                + "                     height:40px;"
+                + "                     border-radius:20px;"
+                + "                     border: medium solid #111111;"
+                + "                     background: linear-gradient()"
+                + "                 }\n"
+                + "                 .barrinha_ally {\n"
+                + "                     background: linear-gradient(to right, #9c0000 0%, #9c0000 " + String.valueOf(vidaAlly * 100) + "%, #1f1f1f " + String.valueOf(vidaAlly * 100) + "%);"
+                + "                 }\n"
+                + "                 .barrinha_enemy {\n"
+                + "                     background: linear-gradient(to left, #9c0000 0%, #9c0000 " + String.valueOf(vidaEnemy * 100) + "%, #1f1f1f " + String.valueOf(vidaEnemy * 100) + "%);"
+                + "                 }\n"
+                + "                 .nomes {\n"
+                + "                     position: absolute;"
+                + "                     top: 3%;\n"
+                + "                     display:flex;"
+                + "                     justify-content: space-between;"
+                + "                     width:82%;"
+                + "                     margin: 3.5%  9%;"
+                + "                 }\n"
+                + "                 .nome {\n"
+                + "                     color:#BEBEBE;"
+                + "                 }\n"
+                + "             </style>\n"
+                + "         </head>\n"
+                + "     <body>\n"
         );
 
         sb.append(erros);
-        String barrinha = "<section class=\"barrinhas\"><div class=\"barrinha barrinha_ally\"></div><div class=\"barrinha barrinha_enemy\"></div></section>";
+        String barrinha = 
+                  "         <section class=\"barrinhas\">"
+                + "             <div class=\"barrinha barrinha_ally\">"
+                + "             </div>"
+                + "             <div class=\"barrinha barrinha_enemy\">"
+                + "             </div>"
+                + "         </section>"
+                + "         <section class=\"nomes\">"
+                + "             <div class=\"nome nome_ally\">" + allyClass 
+                + "             </div>" 
+                + "             <div class=\"nome nome_enemy\">" + enemyClass 
+                + "             </div>"
+                + "         </section>";
         // adiciona personagens
-        String tabelaAlly = "<div class=\"imgAlly\">"
-                + "<img src=\"" + dicImgsPers.get(T6SemanticoUtils.personagemToInt(tabela, "ally")) + "\"  height=\"450\">"
-                + "</div>";
-        String tabelaMeio = "<div class=\"result\"><h1>" + resultado + "</h1></div>";
-        String tabelaEnemy = "<div class=\"imgEnemy\">"
-                + "               <br><img src=\"" + dicImgsPers.get(T6SemanticoUtils.personagemToInt(tabela, "enemy")) + "\"  height=\"450\">\n"
-                + "</div>";
-        String aux = barrinha + "<div class=\"imgs\">" + tabelaAlly + tabelaEnemy + "</div>" + tabelaMeio;
+        String tabelaAlly = 
+                  "             <div class=\"imgAlly\">"
+                + "                 <img src=\"" + dicImgsPers.get(T6SemanticoUtils.personagemToInt(tabela, "ally")) + "\"  height=\"450\">"
+                + "             </div>";
+        String tabelaMeio = 
+                  "             <div class=\"result\">" + resultado 
+                + "             </div>";
+        String tabelaEnemy = 
+                  "             <div class=\"imgEnemy\">"
+                + "                 <img src=\"" + dicImgsPers.get(T6SemanticoUtils.personagemToInt(tabela, "enemy")) + "\"  height=\"450\">\n"
+                + "             </div>";
+        String aux = barrinha + 
+                  "             <div class=\"imgs\">" + tabelaAlly + tabelaEnemy 
+                + "             </div>" + tabelaMeio;
         AdicionaString(aux);
     }
 

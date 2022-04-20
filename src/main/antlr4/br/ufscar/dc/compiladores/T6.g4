@@ -24,6 +24,14 @@ IDENT
 COMENTARIO
     :   '{' ~('\n'|'\r'|'}')* '\r'? '}' {skip();}
     ;
+CADEIA 	
+    :   ('"' ( ESC_SEQ | ~('\n') )*? '"')
+    ;
+fragment
+ESC_SEQ	
+    :   '\\\'' 
+    |   '\\"'
+    ;
 WS  :   ( ' '
         | '\t'
         | '\r'
@@ -32,24 +40,24 @@ WS  :   ( ' '
     ;
 
 programa
-    : 	corpo <EOF>
+    : 	corpo EOF
     ;
 corpo
     :	aliado inimigo cmd*
     ;
 personagem
-    :	id=Class
-    |	'name' ':'  id=IDENT ','
-        'damage type' ':' Tipo ','
-        'armor' ':' armor=Nivel ','
-        'magic resist' ':' mr=Nivel (','
-        'skill' ':' Skill)?
+    :	Class
+    |	'name' ':' CADEIA
+        'damage type' ':' Tipo
+        'armor' ':' armor=Nivel
+        'magic resist' ':' mr=Nivel 
+        ('skill' ':' Skill)?
     ;
 aliado
-    :	'ally' personagem ';'
+    :	'ally' personagem
     ;
 inimigo
-    :	'enemy' personagem ';'
+    :	'enemy' personagem
     ;
 cmd :   cmdSkill
     ;

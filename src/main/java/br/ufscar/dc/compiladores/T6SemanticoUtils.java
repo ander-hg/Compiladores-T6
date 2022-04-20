@@ -8,6 +8,7 @@ public class T6SemanticoUtils {
     
     public static void adiciona(TabelaDeSimbolos tabela, T6Parser.PersonagemContext ctx, String codigo) {
         String classe;
+        // adiciona classe {archer, mage, warrior}
         if (ctx.Class() != null) {
             classe = ctx.Class().getText();
             switch (classe) {
@@ -25,7 +26,23 @@ public class T6SemanticoUtils {
                             "low");
             }
         } else { 
-            classe = ctx.IDENT().getText();
+            classe = ctx.CADEIA().getText();
+            
+            // analise semantica: verifica se possui nomes iguais 
+            if (codigo.equals("enemy")) {
+                if (classe.equals(tabela.verificarNome("ally"))) {
+                    // verificação semantica - nomes iguais
+                    GeradorHTML.AdicionaErro("<div class=\"mensgem nome_igual\"> <br>The fighters have the same name</div><br>");
+                }
+            }
+            
+            // analise semantica: verifica se possui muita armadura e ms
+            int pont = nivelToInt(ctx.armor.getText())+nivelToInt( ctx.mr.getText());
+            if (pont > 5) {
+                GeradorHTML.AdicionaErro("<div class=\"mensagem aviso\"> You've created an OP " + codigo + " but still can be defeated by pierce damage</div><br>");
+            }
+            
+            // adiciona personagem customizado
             if (ctx.Skill() != null) {
                         tabela.adicionar(codigo, classe, 
                         ctx.Tipo().getText(),
@@ -57,7 +74,7 @@ public class T6SemanticoUtils {
             case "medium" -> 2;
             case "high" -> 3;
             default -> 0;
-        }; //multiplicador, recebe mais dano se tiver menos armadura/mr
+        };
     }
     
     public static int tipoToInt(String id){
@@ -65,7 +82,7 @@ public class T6SemanticoUtils {
             case "physical" -> 1;
             case "magic" -> 2;
             default -> 0;
-        }; //multiplicador, recebe mais dano se tiver menos armadura/mr
+        };
     }
     
     public static String upperCaseFirst(String val) {
@@ -83,11 +100,11 @@ public class T6SemanticoUtils {
         return aux;
     } 
 
-    public static double retornaDanoSkill(TabelaDeSimbolos tabela, String skill){
+    public static double retornaDanoSkill(TabelaDeSimbolos tabela, String skill, String time){
         if (skill.equals("pierce")) {
             return 0.6;
         } else if (skill.equals("compose")) {
-            return 2.40 * nivelToFloat(tabela.verificarArmor("enemy")) * nivelToFloat(tabela.verificarMr("enemy"));
+            return 2.40 * nivelToFloat(tabela.verificarArmor(time)) * nivelToFloat(tabela.verificarMr(time));
         }
         return 0;
     } 

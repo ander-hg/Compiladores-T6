@@ -1,0 +1,14 @@
+ally 
+name:"arion"
+damage type: magic
+armor:high
+magic resist:high
+
+enemy 
+name:"barion"
+damage type: physical
+armor:medium
+magic resist:medium
+skill: compose
+
+use(enemy, compose)
