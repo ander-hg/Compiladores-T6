@@ -9,8 +9,8 @@ Autores:
 ## Conteúdo
 - [Descrição](#descricao)
 - [Como utilizar](#comoutilizar)
-- [Implementação](#implementacao)
 - [Como executar](#como)
+- [Implementação](#implementacao)
 - [Observações](#obs)
 
 *******
@@ -30,7 +30,6 @@ Habilidades:
   
   Compose - Quando ativada, substitui o ataque básico para causar 240 de dano que é reduzido tanto pela armadura quando pela MR.
   
-![](/img/battle.png)
   
 <div id='comoutilizar'>
 
@@ -38,12 +37,19 @@ Habilidades:
   
 Estão definidos na linguagem 3 personagens: archer, mage e warrior.
   
-A declaração de personagem pode ser feita de 2 formas: se declarando uma das opções cidada à cima ou definindo um personagem customizado. Observe os exemplos: 
+A declaração de personagem pode ser feita de 2 formas: ou se declarando uma das opções cidadas à cima ou definindo um personagem customizado. 
+  
+Observe o exemplo: 
   
 ```
 ally mage
 enemy archer
 ```
+  
+Na declaração customizada, 4 informações são obrigatórias: o nome (que deve ser informado entre aspas), o tipo de dano do prsonagem, o nível de armadura e o nível de MR. A quinta informação é a habilidade, que pode ser informada ou não. 
+  
+Observe os exemplos:
+  
   
 ```
 ally 
@@ -55,15 +61,25 @@ ally
 enemy 
   archer
 ```
+ 
+```
+ally 
+  mage
+
+enemy 
+  name:"barion"
+  damage type: physical
+  armor: medium
+  magic resist: medium
+  skill: compose
+```
   
-<div id='implementacao'>
-
-## Implementação
-
-Para a implementação do trabalho foi utilizado a ferramenta ANTLR (antlr.org) no ambiente Netbeans juntamente com o Maven. As informações de como trabalhar com ANTLR no maven encontram-se em https://www.antlr.org/api/maven-plugin/latest/usage.html
-
-Para a análise semântica foi utilizado tabela de símbolos, e para gerar o HTML foi criado um visitor.
-
+Para usar uma habilidade utiliza-se o comando "use" passando como parametro qual personagem se deseja ativar a habilidade (ally ou enemy) e qual a habilidade:
+  
+```
+use(enemy, compose)
+```
+  
 <div id='como'>
 
 ## Como rodar
@@ -81,7 +97,21 @@ Exemplo de como rodar o analisador:
 java -jar C:\T6\target\T6-1.0-SNAPSHOT-jar-with-dependencies.jar C:\T6\casos-de-teste\entrada3.txt C:\T6\saida.html
 ```
 
-Como resultado, seu compilador deve ler a entrada C:\T6\casos-de-teste\entrada3.txt e salvar a saída no arquivo C:\T6\saida.html
+Como resultado, seu compilador deve ler a entrada C:\T6\casos-de-teste\entrada3.txt e salvar a saída no arquivo C:\T6\saida.html  
+  
+A saída produzida será uma tela de simulação de batalha em HTML. Cada variação de personagem (tido de dano de ataque, armadura e MS) possui uma skin diferente. Divirta-se descobrindo todas :-)
+  
+![](/img/battle.png)
+  
+<div id='implementacao'>
+
+## Implementação
+
+Para a implementação do trabalho foi utilizado a ferramenta ANTLR (antlr.org) no ambiente Netbeans juntamente com o Maven. As informações de como trabalhar com ANTLR no maven encontram-se em https://www.antlr.org/api/maven-plugin/latest/usage.html
+
+Para a análise semântica foi utilizado tabela de símbolos, e para gerar o HTML foi criado um visitor.
+
+
 
 <div id='obs'>
 
