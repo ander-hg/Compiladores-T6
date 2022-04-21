@@ -7,11 +7,11 @@ Autores:
 - Sophia S. Schuster RA: 760936
 
 ## Conteúdo
-[Descrição](#descricao)
-[Como utilizar](#comoutilizar)
-[Como executar](#como)
-[Implementação](#implementacao)
-[Observações](#obs)
+[Descrição](#descricao)<br>
+[Como utilizar](#comoutilizar)<br>
+[Como executar](#como)<br>
+[Implementação](#implementacao)<br>
+[Observações](#obs)<br>
 
 *******
 
