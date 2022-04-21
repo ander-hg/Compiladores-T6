@@ -26,6 +26,7 @@ A linguagem criada foi uma simulação de batalha. Nela é declarado um aliado e
 O dano do ataque básico é 100. Os níveis de armadura e MR reduzem o dano recebido por 25%, 50% e 75% (respectivamente para "low", "medium" e "high").
  
 Habilidades: 
+  
   Pierce - Quando ativada, substitui o ataque básico para causar 60 de dano que ignora qualquer tipo de resistencia do oponente.
   
   Compose - Quando ativada, substitui o ataque básico para causar 240 de dano que é reduzido tanto pela armadura quando pela MR.
