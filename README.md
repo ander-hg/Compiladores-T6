@@ -23,13 +23,15 @@ Este trabalho consiste na implementação de um compilador completo para uma lin
   
 A linguagem criada foi uma simulação de batalha. Nela é declarado um aliado e um inimigo e vence quem causar mais dano. Cada personagem pode causar ou dano físico ou dano mágico com o seu ataque básico. O dano físico recebido pode ser reduzido através da armadura e o dano mágico através da resistencia a dano magico (MR). Cada personagem possui um nível tanto da sua armadura quanto da sua MR, este nível podendo ser "low", "medium" ou "high". Um personagem pode também possuir uma habilidade, ou "pierce" ou "compose".
   
-O dano do ataque básico é 100. Os níveis de armadura e MR reduzem o dano recebido por 25%, 50% e 75% (respectivamente para "low", "medium" e "high").
+O dano do ataque básico é 100. 
+  
+Os níveis de armadura e MR reduzem o dano recebido por 25%, 50% e 75% (respectivamente para "low", "medium" e "high").
  
 Habilidades: 
   
-  Pierce - Quando ativada, substitui o ataque básico para causar 60 de dano que ignora qualquer tipo de resistencia do oponente.
+ - Pierce - Quando ativada, substitui o ataque básico para causar 60 de dano que ignora qualquer tipo de resistencia do oponente.
   
-  Compose - Quando ativada, substitui o ataque básico para causar 240 de dano que é reduzido tanto pela armadura quando pela MR.
+ - Compose - Quando ativada, substitui o ataque básico para causar 240 de dano que é reduzido tanto pela armadura quando pela MR.
   
   
 <div id='comoutilizar'>
@@ -112,7 +114,13 @@ Para a implementação do trabalho foi utilizado a ferramenta ANTLR (antlr.org) 
 
 Para a análise semântica foi utilizado tabela de símbolos, e para gerar o HTML foi criado um visitor.
 
-
+Na análise semântica é feito 3 verificações: 
+  
+  - Ao tentar utilizar uma habilidade de um personagem, verifica se ele realmente possui essa habilidade.
+  - Se o nome nos personagens são iguais
+  - Se um personagem é OP (Over Power). Isso acontece quando um personagem recebe armadura e MR "high"
+  
+  
 
 <div id='obs'>
 
