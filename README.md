@@ -76,7 +76,7 @@ enemy
   skill: compose
 ```
   
-Para usar uma habilidade utiliza-se o comando "use" passando como parametro qual personagem se deseja ativar a habilidade (ally ou enemy) e qual a habilidade:
+Para usar uma habilidade utiliza-se o comando "use" após a declaração dos personagens, passando como parametro o personagem que possui a habilidade (ally ou enemy) e a habilidade que se deseja ativar.
   
 ```
 use(enemy, compose)
