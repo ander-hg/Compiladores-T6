@@ -23,8 +23,15 @@ Este trabalho consiste na implementação de um compilador completo para uma lin
   
 A linguagem criada foi uma simulação de batalha. Nela é declarado um aliado e um inimigo e vence quem causar mais dano. Cada personagem pode causar ou dano físico ou dano mágico com o seu ataque básico. O dano físico recebido pode ser reduzido pela armadura e o dano mágico pela resistencia a dano magico (MR). Cada personagem possui um nível tanto da sua armadura quanto da sua MR, este nível podendo ser "low", "medium" ou "high". Um personagem pode também possuir uma habilidade. Há duas habilidades implementadas: "pierce" e "compose".
   
-|O dano do ataque básico é 100. <br> Os níveis de armadura e MR reduzem o dano recebido por 25%, 50% e 75% (respectivamente para "low", "medium" e "high"). <br><br> Habilidades: <br> - Pierce: Quando ativada, substitui o ataque básico para causar 60 de dano que ignora qualquer tipo de resistencia do oponente. <br>  - Compose: Quando ativada, substitui o ataque básico para causar 240 de dano que é reduzido tanto pela armadura quando pela MR.|
+|O dano do ataque básico|
 | :------------------- |
+|100| <br>
+|Redução de dano da armadura e MR|
+| :------------------- |
+|  - low: 25% <br> - medium: 50% <br> - high: 75%| <br>
+|Habilidades|
+  | :------------------- |
+  | - Pierce: Quando ativada, substitui o ataque básico para causar 60 de dano que ignora qualquer tipo de resistencia do oponente. <br>  - Compose: Quando ativada, substitui o ataque básico para causar 240 de dano que é reduzido tanto pela armadura quando pela MR.|
   
 <div id='comoutilizar'>
 
