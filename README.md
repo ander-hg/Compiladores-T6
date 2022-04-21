@@ -101,7 +101,7 @@ java -jar C:\T6\target\T6-1.0-SNAPSHOT-jar-with-dependencies.jar C:\T6\casos-de-
 
 Como resultado, seu compilador deve ler a entrada C:\T6\casos-de-teste\entrada3.txt e salvar a saída no arquivo C:\T6\saida.html  
   
-A saída produzida será uma tela de simulação de batalha em HTML. Cada variação de personagem (tido de dano de ataque, armadura e MS) possui uma skin diferente. Divirta-se descobrindo todas :-)
+A saída produzida será uma tela de simulação de batalha em HTML. Cada variação de personagem (tipo de dano de ataque, armadura e MS) possui uma skin diferente. Divirta-se descobrindo todas :-)
   
 ![](/img/battle.png)
   
