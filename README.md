@@ -8,6 +8,7 @@ Autores:
 
 ## Conteúdo
 - [Descrição](#descricao)
+- [Como utilizar](#comoutilizar)
 - [Implementação](#implementacao)
 - [Como executar](#como)
 - [Observações](#obs)
@@ -20,9 +21,40 @@ Autores:
 
 Este trabalho consiste na implementação de um compilador completo para uma linguagem.
   
-A linguagem criada foi uma simulação de batalha em que é declarado um aliado e um inimigo e vnce quem causar mais dano. Cada personagem pode causar ou dano físico ou dano mágico com o seu ataque básico. 
+A linguagem criada foi uma simulação de batalha. Nela é declarado um aliado e um inimigo e vence quem causar mais dano. Cada personagem pode causar ou dano físico ou dano mágico com o seu ataque básico. O dano físico recebido pode ser reduzido através da armadura e o dano mágico através da resistencia a dano magico (MR). Cada personagem possui um nível tanto da sua armadura quanto da sua MR, este nível podendo ser "low", "medium" e "high". Um personagem pode também possuir uma habilidade, ou "pierce" ou "compose".
+  
+O dano do ataque básico é 100. Os níveis de armadura e MR reduzem o dano recebido por 25%, 50% e 75% (respectivamente para "low", "medium" e "high").
+ 
+Habilidades: 
+  Pierce - Quando ativada, substitui o ataque básico para causar 60 de dano que ignora qualquer tipo de resistencia do oponente.
+  
+  Compose - Quando ativada, substitui o ataque básico para causar 240 de dano que é reduzido tanto pela armadura quando pela MR.
   
 ![](/img/battle.png)
+  
+<div id='comoutilizar'>
+
+## Como utilizar
+  
+Estão definidos na linguagem 3 personagens: archer, mage e warrior.
+  
+A declaração de personagem pode ser feita de 2 formas: se declarando uma das opções cidada à cima ou definindo um personagem customizado. Observe os exemplos: 
+  
+```
+ally mage
+enemy archer
+```
+  
+```
+ally 
+  name: "barion"
+  damage type: magic
+  armor: high
+  magic resist: high
+
+enemy 
+  archer
+```
   
 <div id='implementacao'>
 
