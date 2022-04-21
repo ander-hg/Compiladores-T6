@@ -18,6 +18,10 @@ Autores:
 
 ## Descrição
 
+Este trabalho consiste na implementação de um compilador completo para uma linguagem.
+  
+A linguagem criada foi uma simulação de batalha em que é declarado um aliado e um inimigo e vnce quem causar mais dano. Cada personagem pode causar ou dano físico ou dano mágico com o seu ataque básico. 
+  
 ![](/img/battle.png)
   
 <div id='implementacao'>
@@ -26,7 +30,7 @@ Autores:
 
 Para a implementação do trabalho foi utilizado a ferramenta ANTLR (antlr.org) no ambiente Netbeans juntamente com o Maven. As informações de como trabalhar com ANTLR no maven encontram-se em https://www.antlr.org/api/maven-plugin/latest/usage.html
 
-Para a análise semântica foi utilizado tabela de símbolos, e para o gerador de código foi criado um visitor.
+Para a análise semântica foi utilizado tabela de símbolos, e para gerar o HTML foi criado um visitor.
 
 <div id='como'>
 
@@ -45,7 +49,7 @@ Exemplo de como rodar o analisador:
 java -jar C:\T6\target\T6-1.0-SNAPSHOT-jar-with-dependencies.jar C:\T6\casos-de-teste\entrada3.txt C:\T6\saida.html
 ```
 
-Como resultado, seu compilador deve ler a entrada C:\compilatorest3\casos-de-teste\3.casos_teste_t3\entrada\8.algoritmo_6-2_apostila_LA.txt e salvar a saída no diretório C:\compiladorest3\saida.html
+Como resultado, seu compilador deve ler a entrada C:\T6\casos-de-teste\entrada3.txt e salvar a saída no arquivo C:\T6\saida.html
 
 <div id='obs'>
 
