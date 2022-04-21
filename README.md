@@ -46,17 +46,14 @@ Estão definidos na linguagem 3 personagens: archer, mage e warrior.
   
 A declaração de personagem pode ser feita de 2 formas: ou se declarando uma das opções cidadas à cima ou definindo um personagem customizado. 
   
-Observe o exemplo: 
+Na declaração customizada, 4 informações são obrigatórias: o nome (que deve ser informado entre aspas), o tipo de dano do prsonagem, o nível de armadura e o nível de MR. A quinta informação é a habilidade, que pode ser informada ou não.
+  
+Observe os exemplos:
   
 ```
 ally mage
 enemy archer
 ```
-  
-Na declaração customizada, 4 informações são obrigatórias: o nome (que deve ser informado entre aspas), o tipo de dano do prsonagem, o nível de armadura e o nível de MR. A quinta informação é a habilidade, que pode ser informada ou não. 
-  
-Observe os exemplos:
-  
   
 ```
 ally 
@@ -64,7 +61,6 @@ ally
   damage type: magic
   armor: high
   magic resist: high
-
 enemy 
   archer
 ```
@@ -72,7 +68,6 @@ enemy
 ```
 ally 
   mage
-
 enemy 
   name:"barion"
   damage type: physical
