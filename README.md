@@ -25,7 +25,7 @@ A linguagem criada foi uma simulação de batalha. Nela é declarado um aliado e
   
 ****
   
-O dano do ataque básico é 100. 
+<p>O dano do ataque básico é 100. 
   
 Os níveis de armadura e MR reduzem o dano recebido por 25%, 50% e 75% (respectivamente para "low", "medium" e "high").
  
