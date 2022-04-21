@@ -31,12 +31,12 @@ A linguagem criada foi uma simulação de batalha. Nela é declarado um aliado e
   
 |Redução de dano da armadura e MR|
 | :------------------- |
-|  - low: 25% <br> - medium: 50% <br> - high: 75%| 
+|  low: 25% <br> medium: 50% <br> - high: 75%| 
   
   
 |Habilidades|
   | :------------------- |
-  | - Pierce: Quando ativada, substitui o ataque básico para causar 60 de dano que ignora qualquer tipo de resistencia do oponente. <br>  - Compose: Quando ativada, substitui o ataque básico para causar 240 de dano que é reduzido tanto pela armadura quando pela MR.|
+  | Pierce: Quando ativada, substitui o ataque básico para causar 60 de dano que ignora qualquer tipo de resistencia do oponente. <br>  Compose: Quando ativada, substitui o ataque básico para causar 240 de dano que é reduzido tanto pela armadura quando pela MR.|
   
 <div id='comoutilizar'>
 
