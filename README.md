@@ -19,6 +19,8 @@ Autores:
 
 ## Descrição
 
+Vídeo descrevendo projeto: link
+  
 Este trabalho consiste na implementação de um compilador completo para uma linguagem.
   
 A linguagem criada foi uma simulação de batalha. Nela é declarado um aliado e um inimigo e vence quem causar mais dano. Cada personagem pode causar ou dano físico ou dano mágico com o seu ataque básico. O dano físico recebido pode ser reduzido pela armadura e o dano mágico pela resistencia a dano magico (MR). Cada personagem possui um nível tanto da sua armadura quanto da sua MR, este nível podendo ser "low", "medium" ou "high". Um personagem pode também possuir uma habilidade. Há duas habilidades implementadas: "pierce" e "compose".
@@ -128,10 +130,8 @@ Na análise semântica é feito 3 verificações:
 
 ## Observações
   
-creditos ironhide
+Imagens: Ironhide Game Studio. https://www.legendsofkingdomrush.com
 
 Encontram-se também nesse projeto:
   
   Exemplos de uso
-
-
