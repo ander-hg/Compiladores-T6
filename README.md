@@ -31,7 +31,7 @@ A linguagem criada foi uma simulação de batalha. Nela é declarado um aliado e
   
 |Redução de dano da armadura e MR|
 | :------------------- |
-|  low: 25% <br> medium: 50% <br> - high: 75%| 
+|  low: 25% <br> medium: 50% <br> high: 75%| 
   
   
 |Habilidades|
