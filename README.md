@@ -19,7 +19,7 @@ Autores:
 
 ## Descrição
 
-Vídeo descrevendo projeto: link
+Vídeo descrevendo projeto: https://drive.google.com/file/d/1D-0cd-_3l-RpSODabeVkSLTeQyFwvMCT/view?usp=sharing
   
 Este trabalho consiste na implementação de um compilador completo para uma linguagem.
   
@@ -124,6 +124,8 @@ Na análise semântica é feito 3 verificações:
 <div id='obs'>
 
 ## Observações
+  
+java version "17.0.2"
   
 Imagens: Ironhide Game Studio. https://www.legendsofkingdomrush.com
 
