@@ -2,9 +2,9 @@
 
 Trabalho final de Construção de Compiladores, matéria ministrada por professor Daniel Lucredio.
 
-Autores: 
+Autor: 
 - Anderson H. Giacomini RA: 769720
-- Sophia S. Schuster RA: 760936
+[//]: # (- Sophia S. Schuster RA: 760936)
 
 ## Conteúdo
 - [Descrição](#descricao)
