@@ -1,6 +1,6 @@
 # Battle Compiler
 
-Trabalho final de Construção de Compiladores, matéria ministrada por professor Daniel Lucredio.
+Trabalho final de Construção de Compiladores, matéria ministrada pelo professor Daniel Lucredio.
 
 Autores: 
 - Anderson H. Giacomini RA: 769720
