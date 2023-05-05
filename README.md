@@ -1,4 +1,4 @@
-# Construção de Compiladores
+# Battle Compiler
 
 Trabalho final de Construção de Compiladores, matéria ministrada por professor Daniel Lucredio.
 
